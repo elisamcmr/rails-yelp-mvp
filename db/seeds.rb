@@ -17,29 +17,22 @@ Restaurant.destroy_all
 
 # 2. Create the instances 🏗️
 puts 'Creating restaurants...'
-Restaurant.create(name: Faker::Restaurant.name,
-                  address: Faker::Address.full_address,
-                  phone_number: Faker::PhoneNumber.phone_number,
-                  category: categories.sample)
+10.times do
+  restaurant = Restaurant.create!(
+    name: Faker::Restaurant.name,
+    address: Faker::Address.full_address,
+    phone_number: Faker::PhoneNumber.phone_number,
+    category: categories.sample
+  )
 
-Restaurant.create(name: Faker::Restaurant.name,
-                  address: Faker::Address.full_address,
-                  phone_number: Faker::PhoneNumber.phone_number,
-                  category: categories.sample)
+  # 3. Create 5 reviews for each restaurant ✍️
+  5.times do
+    Review.create!(
+      content: Faker::Restaurant.review,
+      rating: rand(0..5),
+      restaurant: restaurant
+    )
+  end
+end
 
-Restaurant.create(name: Faker::Restaurant.name,
-                  address: Faker::Address.full_address,
-                  phone_number: Faker::PhoneNumber.phone_number,
-                  category: categories.sample)
-
-Restaurant.create(name: Faker::Restaurant.name,
-                  address: Faker::Address.full_address,
-                  phone_number: Faker::PhoneNumber.phone_number,
-                  category: categories.sample)
-
-Restaurant.create(name: Faker::Restaurant.name,
-                  address: Faker::Address.full_address,
-                  phone_number: Faker::PhoneNumber.phone_number,
-                  category: categories.sample)
-
-# 3. Display a message 🎉
+puts 'Seeding completed!'

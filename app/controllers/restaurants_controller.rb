@@ -3,6 +3,7 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
+    @restaurants = Restaurant.all.includes(:reviews)
   end
 
   def show
