@@ -7,3 +7,39 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'faker'
+
+categories = %w[Chinese Italian Japanese French Belgian]
+
+# 1. Clean the database 🗑️
+puts 'Cleaning database...'
+Restaurant.destroy_all
+
+# 2. Create the instances 🏗️
+puts 'Creating restaurants...'
+Restaurant.create(name: Faker::Restaurant.name,
+                  address: Faker::Address.full_address,
+                  phone_number: Faker::PhoneNumber.phone_number,
+                  category: categories.sample)
+
+Restaurant.create(name: Faker::Restaurant.name,
+                  address: Faker::Address.full_address,
+                  phone_number: Faker::PhoneNumber.phone_number,
+                  category: categories.sample)
+
+Restaurant.create(name: Faker::Restaurant.name,
+                  address: Faker::Address.full_address,
+                  phone_number: Faker::PhoneNumber.phone_number,
+                  category: categories.sample)
+
+Restaurant.create(name: Faker::Restaurant.name,
+                  address: Faker::Address.full_address,
+                  phone_number: Faker::PhoneNumber.phone_number,
+                  category: categories.sample)
+
+Restaurant.create(name: Faker::Restaurant.name,
+                  address: Faker::Address.full_address,
+                  phone_number: Faker::PhoneNumber.phone_number,
+                  category: categories.sample)
+
+# 3. Display a message 🎉
